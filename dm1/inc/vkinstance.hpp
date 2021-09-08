@@ -1,6 +1,5 @@
 #pragma once
-#include "vulkan/vulkan.hpp"
-#include "GLFW/glfw3.h"
+#include "prereq.hpp"
 
 struct VKInstance {
     explicit VKInstance(const char* app_name);
@@ -10,5 +9,16 @@ struct VKInstance {
 
     VkInstance instance;
 };
+
+namespace details {
+#ifdef _DEBUG 
+    constexpr const bool enable_validation_layers = true;
+#else
+    constexpr const bool enable_validation_layers = false;
+#endif
+    inline const std::vector<const char*> validation_layers = {
+        "VK_LAYER_KHRONOS_validation"
+    };
+}
 
 

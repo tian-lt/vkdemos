@@ -2,15 +2,6 @@
 #include "vkinstance.hpp"
 
 namespace details {
-#ifdef _DEBUG 
-    constexpr const bool enable_validation_layers = true;
-#else
-    constexpr const bool enable_validation_layers = false;
-#endif
-    const std::vector<const char*> validation_layers = {
-        "VK_LAYER_KHRONOS_validation"
-    };
-
     bool check_validation_layer_support() {
         uint32_t layer_count;
         vkEnumerateInstanceLayerProperties(&layer_count, nullptr);
