@@ -1,9 +1,5 @@
 #pragma once
 #include "prereq.hpp"
-#include "vkinstance.hpp"
-#include "vksurface.hpp"
-#include "vkpdevice.hpp"
-#include "vkldevice.hpp"
 
 class DemoApplication {
 public:
@@ -17,10 +13,6 @@ private:
 
 private:
     GLFWwindow* _wnd;
-    std::unique_ptr<VKInstance> _vkinst;
-    std::unique_ptr<VKSurface> _vksurface;
-    std::unique_ptr<VKPhysicalDevice> _vkpdev;
-    std::unique_ptr<VKLogicalDevice> _vkdev;
 };
 
 
