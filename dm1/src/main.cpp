@@ -1,3 +1,4 @@
+#include <iostream>
 #include "app.hpp"
 
 int main(int argc, char** argv) {
@@ -7,6 +8,7 @@ int main(int argc, char** argv) {
         return 0;
     }
     catch (const std::exception& ex) {
+        std::cerr << ">>>>>>>>>>>>>>>>>>>>\n" << ex.what() << std::endl;
         return -1;
     }
 }

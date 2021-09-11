@@ -3,6 +3,8 @@
 #include <memory>
 #include <optional>
 #include <vector>
+#include <optional>
+#include <set>
 
 #define VK_USE_PLATFORM_WIN32_KHR
 #define GLFW_INCLUDE_VULKAN

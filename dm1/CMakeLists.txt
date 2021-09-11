@@ -20,6 +20,7 @@ add_executable(dm1
     ${DM1_HEADER_FILES} # for IDC searching convenience
 )
 
+target_compile_definitions(dm1 PRIVATE TEST_RESOURCES_DIR="${TEST_RESOURCES_DIR}")
 target_include_directories(dm1 PRIVATE inc)
 target_include_directories(dm1 PRIVATE ${Vulkan_INCLUDE_DIRS})
 target_link_libraries(dm1 PRIVATE glfw)
