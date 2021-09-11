@@ -1,5 +1,7 @@
-#include "app.hpp"
 #include <cstdint>
+#include <iostream>
+#include <thread>
+#include "app.hpp"
 
 constexpr int WINDOW_WIDTH = 800;
 constexpr int WINDOW_HEIGHT = 600;
@@ -25,6 +27,8 @@ void DemoApplication::_init() {
 void DemoApplication::_loop() {
     while (!glfwWindowShouldClose(_wnd)) {
         glfwPollEvents();
+        _render();
+        _vkctx->wait_for_device_idle();
     }
 }
 
@@ -32,6 +36,14 @@ void DemoApplication::_cleanup() {
     _vkctx.reset();
     glfwDestroyWindow(_wnd);
     glfwTerminate();
+}
+
+void DemoApplication::_render() {
+    using namespace std::chrono_literals;
+    static int frame = 0;
+    std::cout << "frame number: " << frame++ << std::endl;
+    _vkctx->draw_frame();
+    std::this_thread::sleep_for(16ms);
 }
 
 

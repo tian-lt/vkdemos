@@ -11,6 +11,9 @@ class VKContext {
 public:
     void initialize(GLFWwindow* window, const std::string& app_name, const std::string& engine_name, const std::string& rootpath);
     void uninitialize();
+    void reset_swapchain();
+    void draw_frame();
+    void wait_for_device_idle();
 
 private:
     struct QueueFamilyIndices {
@@ -63,12 +66,15 @@ private:
     static VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR& capabilities, GLFWwindow* window);
     static std::string readFile(const std::string& filename);
     static VkShaderModule createShaderModule(VkDevice device, const std::string& code);
+    
 private:
     std::string _app_name;
     std::string _engine_name;
     std::string _roopath;
     GLFWwindow* _window;
 
+public:
+    int _current_frame;
     VkInstance _inst;
     VkDebugUtilsMessengerEXT _dbgmsg;
     VkSurfaceKHR _surface;
@@ -91,4 +97,5 @@ private:
     std::vector<VkSemaphore> _render_finished_smphr;
     std::vector<VkFence> _inflight_fences;
     std::vector<VkFence> _imgs_inflight;
+    bool _frame_buffer_resized;
 };

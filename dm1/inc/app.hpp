@@ -10,6 +10,7 @@ private:
     void _init();
     void _loop();
     void _cleanup();
+    void _render();
 
 private:
     GLFWwindow* _wnd;
